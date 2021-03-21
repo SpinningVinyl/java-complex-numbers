@@ -14,12 +14,12 @@ public class Complex {
         this(0,0);
     }
 
-    public Complex(Complex c) {
-        if (c == null) {
+    public Complex(Complex that) {
+        if (that == null) {
             throw new IllegalArgumentException("Complex number can't be null.");
         }
-        this.real = c.r();
-        this.imaginary = c.i();
+        this.real = that.r();
+        this.imaginary = that.i();
     }
 
     public double r() {
@@ -64,17 +64,17 @@ public class Complex {
         return real + " - " + imaginary + "i";
     }
 
-    public Complex add(Complex c) {
-        return new Complex(real + c.real, imaginary + c.imaginary);
+    public Complex add(Complex that) {
+        return new Complex(real + that.real, imaginary + that.imaginary);
     }
 
-    public Complex subtract(Complex c) {
-        return new Complex(real - c.real, imaginary - c.imaginary);
+    public Complex subtract(Complex that) {
+        return new Complex(real - that.real, imaginary - that.imaginary);
     }
 
-    public Complex multiply(Complex c) {
-        double real = this.real * c.real - this.imaginary * c.imaginary;
-        double imaginary = this.real * c.imaginary + this.imaginary * c.real;
+    public Complex multiply(Complex that) {
+        double real = this.real * that.real - this.imaginary * that.imaginary;
+        double imaginary = this.real * that.imaginary + this.imaginary * that.real;
         return new Complex(real, imaginary);
     }
 
@@ -91,13 +91,13 @@ public class Complex {
         return new Complex(real, -1*imaginary);
     }
 
-    public Complex divide(Complex c) {
-        return multiply(c.reciprocal());
+    public Complex divide(Complex that) {
+        return multiply(that.reciprocal());
     }
 
     public Complex divide(double a) {
         if (a == 0) {
-            throw new IllegalArgumentException("Can't divide by 0.");
+            throw new ArithmeticException("Can't divide by 0.");
         }
         return new Complex(real / a, imaginary / a);
     }
