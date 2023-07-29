@@ -61,7 +61,7 @@ public class Complex {
         if (imaginary < 0) {
             return real + " - " + -1*imaginary + "i";
         }
-        return real + " - " + imaginary + "i";
+        return real + " + " + imaginary + "i";
     }
 
     public Complex add(Complex that) {
